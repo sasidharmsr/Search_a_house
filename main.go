@@ -33,5 +33,8 @@ func main() {
 	router.HandleFunc("/sales/{id}", handlers.DeleteSale(dbName)).Methods("DELETE")
 	router.HandleFunc("/sales/{id}", handlers.GetSingleUserSales(dbName)).Methods("GET")
 
+	router.HandleFunc("/filterhome", handlers.GetHousesbyQuery(dbName)).Methods("GET")
+	router.HandleFunc("/nearbyhome", handlers.GetHousesNearBy(dbName)).Methods("POST")
+	router.HandleFunc("/user/homes/{id}", handlers.GetUsersbyQuery(dbName)).Methods("GET")
 	http.ListenAndServe(":8090", router)
 }
